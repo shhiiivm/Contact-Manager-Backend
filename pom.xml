@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.contactmanager</groupId>
-	<artifactId>contact2.0</artifactId>
+	<artifactId>Contact Manager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>contact2.0</name>
 	<description>project for storing and managing contact on cloud</description>
