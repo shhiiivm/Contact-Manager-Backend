@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" th:fragment="parent(content, title, script)" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}">My App</title>
+
+    <link rel="stylesheet" th:href="@{/output.css}" />
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- Option A: use your own flag -->
+    <div th:if="${loggedInUser != null}">
+        <div th:replace="~{user/user_navbar :: user-navbar}"></div>
+    </div>
+
+    <div th:unless="${loggedInUser != null}">
+        <div th:replace="~{navbar :: navbar}"></div>
+    </div>
+
+    <!-- DO NOT include any more navbars below -->
+
+    <div class="p-4 text-left">
+        <section th:replace="${content}"></section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <th:block th:replace="${script}"></th:block>
+</body>
+
+</html>

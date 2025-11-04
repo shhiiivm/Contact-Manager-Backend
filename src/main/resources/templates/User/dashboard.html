@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"
+      th:replace="~{base :: parent(~{::#content}, ${loggedInUser.name} + ' | Dashboard', ~{::script})}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+<body>
+<div id="content">
+
+    <div th:if="${loggedInUser != null}">
+        <div th:replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+    <div class="pt-10 sm:pl-64"  style="height: 10000px">
+
+        <h1>Welcome to Dashboard Page</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, veritatis.</p>
+
+    </div>
+
+
+</div>
+
+<script>
+    console.log("This is dashboard page");
+</script>
+</body>
+</html>

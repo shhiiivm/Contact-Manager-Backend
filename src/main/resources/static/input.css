@@ -1,0 +1,2 @@
+@import "tailwindcss";          /* v4 way */
+@source "../templates";         /* scan Thymeleaf templates */

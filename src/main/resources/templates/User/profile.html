@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ${loggedInUser.name} + ' | SCM', ~{::script})}">
+
+<head>
+
+</head>
+
+<body>
+    <div id="content">
+
+        <div th:if="${loggedInUser != null}">
+            <div th:replace="~{user/sidebar :: sidebar}"></div>
+        </div>
+
+        <div class="pt-10 sm:pl-64 flex justify-center items-center min-h-screen">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 max-w-md w-full mx-4">
+                <div class="text-center">
+                    <!-- Profile Picture -->
+                    <div class="flex justify-center mb-6">
+                        <img th:src="${loggedInUser.profilePic != null ? loggedInUser.profilePic : '/docs/images/people/profile-picture-1.jpg'}"
+                            alt="Profile Picture"
+                            class="w-32 h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-700">
+                    </div>
+
+                    <!-- User Details Box -->
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Profile</h2>
+
+                    <div class="space-y-4">
+                        <!-- Name -->
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
+                            <span class="font-medium text-gray-600 dark:text-gray-300">Name:</span>
+                            <span class="text-gray-800 dark:text-white" th:text="${loggedInUser.name}">User Name</span>
+                        </div>
+
+                        <!-- Email -->
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
+                            <span class="font-medium text-gray-600 dark:text-gray-300">Email:</span>
+                            <span class="text-gray-800 dark:text-white"
+                                th:text="${loggedInUser.email}">user@example.com</span>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
+                            <span class="font-medium text-gray-600 dark:text-gray-300">Phone:</span>
+                            <span class="text-gray-800 dark:text-white"
+                                th:text="${loggedInUser.phoneNumber ?: 'Not provided'}">Phone Number</span>
+                        </div>
+
+                        <!-- Email Verification Status -->
+                        <div class="flex justify-between items-center py-2">
+                            <span class="font-medium text-gray-600 dark:text-gray-300">Email Verified:</span>
+                            <span class="text-green-500 font-semibold" th:if="${loggedInUser.emailVerified}">Yes</span>
+                            <span class="text-red-500 font-semibold" th:unless="${loggedInUser.emailVerified}">No</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        console.log("This is profile page");
+    </script>
+</body>
+
+</html>

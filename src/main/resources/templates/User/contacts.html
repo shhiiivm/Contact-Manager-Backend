@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, 'All your contacts', ~{::script})}"
+    xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+</head>
+
+<body>
+    <div id="content">
+
+        <div th:if="${loggedInUser != null}">
+            <div th:replace="~{user/sidebar :: sidebar}"></div>
+        </div>
+
+        <div class="sm:pl-64 pt-20">
+            <div class="">
+                <h1 class="text-5xl text-center"> All your Contacts</h1>
+                <p class="text-center">List Of contacts</p>
+
+                <!-- Messages -->
+                <div th:if="${message}" th:class="'p-4 mb-4 text-sm rounded-lg ' + 
+                           (${message.type == 'green'} ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700')">
+                    <span th:text="${message.content}"></span>
+                </div>
+
+                <div class="contacts_container p-5">
+
+                    <div>
+                        <!-- Search Form -->
+                        <form th:action="@{/user/contacts/search}" th:object="${contactSearchForm}" method="get"
+                            class="mb-4 flex justify-between items-center">
+                            <div class="flex items-center space-x-4">
+                                <select th:field="*{field}" class="border border-gray-300 rounded px-10 py-1">
+                                    <option value="name">Name</option>
+                                    <option value="email">Email</option>
+                                    <option value="phone">Phone</option>
+                                </select>
+                                <input type="text" th:field="*{value}" placeholder="Enter search term"
+                                    class="border border-gray-300 rounded px-2 py-1">
+                                <button type="submit"
+                                    class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600">
+                                    Search
+                                </button>
+                                <a th:href="@{/user/contacts}"
+                                    class="bg-gray-500 text-white px-4 py-1 rounded hover:bg-gray-600">
+                                    Clear
+                                </a>
+                            </div>
+                            <!-- Export Button -->
+                            <button type="button" id="exportButton"
+                                class="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600">
+                                Export to Excel
+                            </button>
+                        </form>
+
+                    </div>
+
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <div
+                            class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+                            <div>
+                                <!-- Action button and dropdown removed as requested -->
+                            </div>
+                            <div class="relative">
+                                <!-- Search for users field removed as requested -->
+                            </div>
+                        </div>
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Phone
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Links
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="contact : ${pageContact.content}"
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row"
+                                        class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <!-- Display user icon if no picture is available -->
+                                        <div th:if="${contact.picture == null or contact.picture.isEmpty()}"
+                                            class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                                            <i class="fa-solid fa-user text-gray-500"></i>
+                                        </div>
+                                        <!-- Display contact picture if available -->
+                                        <img th:unless="${contact.picture == null or contact.picture.isEmpty()}"
+                                            class="w-10 h-10 rounded-full" th:src="${contact.picture}"
+                                            alt="Contact image">
+                                        <div class="ps-3">
+                                            <div class="text-base font-semibold" th:text="${contact.name}">Contact Name
+                                            </div>
+                                            <div class="font-normal text-gray-500" th:text="${contact.email}">
+                                                contact.email@example.com</div>
+                                        </div>
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        <span th:if="${contact.favourite}" class="text-red-500 font-bold">*</span>
+                                        <span th:text="${contact.phoneNumber}">Phone Number</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2">
+                                            <a th:if="${contact.websiteLink}" th:href="${contact.websiteLink}"
+                                                target="_blank" class="text-blue-500 hover:text-blue-700">
+                                                <i class="fas fa-globe"></i>
+                                            </a>
+                                            <a th:if="${contact.linkedInLink}" th:href="${contact.linkedInLink}"
+                                                target="_blank" class="text-blue-700 hover:text-blue-900">
+                                                <i class="fab fa-linkedin"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2">
+                                            <!-- View Icon - opens view page -->
+                                            <a th:href="@{'/user/contacts/view/' + ${contact.id} + '?mode=view'}"
+                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                                title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <!-- Edit Icon -->
+                                            <a th:href="@{'/user/contacts/view/' + ${contact.id}}"
+                                                class="font-medium text-green-600 dark:text-green-500 hover:underline"
+                                                title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <!-- Delete Icon -->
+                                            <a href="javascript:void(0)"
+                                                th:attr="data-contact-id=${contact.id}, data-contact-name=${contact.name}"
+                                                class="font-medium text-red-600 dark:text-red-500 hover:underline delete-contact-btn"
+                                                title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Pagination -->
+                        <div th:if="${pageContact.totalPages > 1}" class="flex items-center justify-center pt-8 py-8"
+                            role="navigation" aria-label="Pagination">
+                            <div class="inline-flex space-x-5">
+                                <!-- Previous Button -->
+                                <a th:if="${pageContact.hasPrevious()}"
+                                    th:href="@{/user/contacts(page=${pageContact.number - 1}, size=${pageSize})}"
+                                    class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300">
+                                    Previous
+                                </a>
+
+                                <!-- Page Numbers -->
+                                <a th:each="pageNumber : ${#numbers.sequence(0, pageContact.totalPages - 1)}"
+                                    th:if="${pageNumber == pageContact.number}"
+                                    class="px-3 py-1 rounded-md bg-blue-500 text-white">
+                                    <span th:text="${pageNumber + 1}"></span>
+                                </a>
+                                <a th:each="pageNumber : ${#numbers.sequence(0, pageContact.totalPages - 1)}"
+                                    th:unless="${pageNumber == pageContact.number}"
+                                    th:href="@{/user/contacts(page=${pageNumber}, size=${pageSize})}"
+                                    class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300">
+                                    <span th:text="${pageNumber + 1}"></span>
+                                </a>
+
+                                <!-- Next Button -->
+                                <a th:if="${pageContact.hasNext()}"
+                                    th:href="@{/user/contacts(page=${pageContact.number + 1}, size=${pageSize})}"
+                                    class="px-4 py-1 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300">
+                                    Next
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("This is dashboard page");
+        
+        // Initialize delete confirmation for all delete buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add event listener to all delete buttons
+            const deleteButtons = document.querySelectorAll('.delete-contact-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const contactId = this.getAttribute('data-contact-id');
+                    const contactName = this.getAttribute('data-contact-name');
+                    
+                    // Show SweetAlert confirmation
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: `You are about to delete the contact: ${contactName}`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Redirect to delete URL if confirmed
+                            window.location.href = `/user/contacts/delete/${contactId}`;
+                        }
+                    });
+                });
+            });
+            
+            // Add event listener for export button
+            const exportButton = document.getElementById('exportButton');
+            if (exportButton) {
+                exportButton.addEventListener('click', exportToExcel);
+            }
+        });
+        
+        // Function to export table data to Excel
+        function exportToExcel() {
+            // Get the table element
+            const table = document.querySelector('table');
+            if (!table) {
+                Swal.fire('Error', 'No data found to export', 'error');
+                return;
+            }
+            
+            // Create a new workbook and worksheet
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.table_to_sheet(table);
+            
+            // Add the worksheet to the workbook
+            XLSX.utils.book_append_sheet(wb, ws, 'Contacts');
+            
+            // Generate and download the Excel file
+            XLSX.writeFile(wb, 'contacts.xlsx');
+        }
+    </script>
+</body>
+
+</html>

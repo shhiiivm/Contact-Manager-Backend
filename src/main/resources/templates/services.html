@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base :: parent(~{::#content}, 'Services' ,  ~{::#pageScripts})">
+
+<head>
+    <titl>Services</titl>
+</head>
+<body>
+<div id="content" class="pl-10 mt-10">
+    <h1>Welcome to services Page</h1>
+    <h2>service offered by scm</h2>
+    Lorem ipsum dolor sit amet.
+</div>
+
+<th:block id="pageScripts">
+    <script>
+        console.log("services page script loaded!");
+    </script>
+</th:block>
+</body>
+</html>

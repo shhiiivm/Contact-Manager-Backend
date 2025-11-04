@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="base :: parent(~{::#content}, 'Smart Contact Manager - Home' , ~{})">
+
+<body>
+    <div id="content" class="pt-16">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-500 to-indigo-700 text-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Smart Contact Manager</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Securely store, organize, and manage all your contacts in one place with our cloud-based solution
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/login"
+                        class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                        Get Started
+                    </a>
+                    <a href="#features"
+                        class="bg-transparent border-2 border-white hover:bg-white hover:text-indigo-700 font-bold py-3 px-8 rounded-lg transition duration-300">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Powerful Features</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div
+                        class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="text-blue-500 text-4xl mb-4">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Cloud Storage</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Store all your contacts securely in the cloud and access them from anywhere, anytime.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div
+                        class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="text-green-500 text-4xl mb-4">
+                            <i class="fas fa-user-lock"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Secure & Private</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Your data is encrypted and protected with industry-standard security measures.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div
+                        class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="text-purple-500 text-4xl mb-4">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Sync Across Devices</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Access your contacts seamlessly on all your devices with automatic synchronization.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div
+                        class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="text-yellow-500 text-4xl mb-4">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Smart Search</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Quickly find any contact with our powerful search and filtering capabilities.
+                        </p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div
+                        class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="text-red-500 text-4xl mb-4">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Favorite Contacts</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Mark important contacts as favorites for quick access and priority notifications.
+                        </p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div
+                        class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300">
+                        <div class="text-indigo-500 text-4xl mb-4">
+                            <i class="fas fa-file-export"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Export & Backup</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Easily export your contacts or create backups to ensure you never lose important
+                            information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">How It Works</h2>
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Contact Management Dashboard" class="rounded-lg shadow-lg">
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                                    1</div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Sign Up & Create Account
+                                </h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-12">
+                                Register for a free account and verify your email to get started with our contact
+                                manager.
+                            </p>
+                        </div>
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                                    2</div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Add Your Contacts</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-12">
+                                Easily add, import, or sync your contacts from various sources into our secure platform.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                                    3</div>
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Organize & Access</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-12">
+                                Organize your contacts, add tags, mark favorites, and access them from any device.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-gradient-to-r from-blue-500 to-indigo-700 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Contact Management?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">
+                    Join thousands of users who have already simplified their contact management with Smart Contact
+                    Manager.
+                </p>
+                <a href="/register"
+                    class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                    Create Free Account
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-xl font-bold">Smart Contact Manager</h3>
+                        <p class="text-gray-400">Your trusted contact management solution</p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                    <p>&copy; 2025 Smart Contact Manager. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
