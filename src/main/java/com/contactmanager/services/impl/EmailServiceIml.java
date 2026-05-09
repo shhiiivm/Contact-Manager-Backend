@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class EmailServiceIml implements EmailService {
 
 
-    @Autowired
+    @Autowired(required = false)
     private JavaMailSender emailSender;
 
     @Value("${spring.mail.properties.domain_name}")
@@ -19,6 +19,9 @@ public class EmailServiceIml implements EmailService {
 
     @Override
     public void sendEmail(String to, String subject, String body) {
+        if (emailSender == null) {
+            return; // Skip email sending if email service is not configured
+        }
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
