@@ -14,7 +14,7 @@ public class EmailServiceIml implements EmailService {
     @Autowired(required = false)
     private JavaMailSender emailSender;
 
-    @Value("${spring.mail.properties.domain_name}")
+    @Value("${spring.mail.properties.domain_name:localhost}")
     private String domainName;
 
     @Override
