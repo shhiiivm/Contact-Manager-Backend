@@ -31,10 +31,8 @@ public class User implements UserDetails
     private String email;
     @Getter(AccessLevel.NONE)
     private String password;
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String about;
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String profilePic;
     private String phoneNumber;

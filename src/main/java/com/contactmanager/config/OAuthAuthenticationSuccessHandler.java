@@ -53,10 +53,21 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
 
          if(authorizedClientRegistrationId.equalsIgnoreCase("google"))
          {
-             user.setEmail(oauthUser.getAttribute("email").toString());
-             user.setProfilePic(oauthUser.getAttribute("picture").toString());
-             user.setName(oauthUser.getAttribute("name").toString());
-             user.setProviderUserId(oauthUser.getName());
+             String email = oauthUser.getAttribute("email");
+             String name = oauthUser.getAttribute("name");
+             String picture = oauthUser.getAttribute("picture");
+             String sub = oauthUser.getAttribute("sub");
+
+             System.out.println("Google OAuth2 attributes - email: " + email + ", name: " + name + ", sub: " + sub);
+
+             if (email != null) {
+                 user.setEmail(email);
+             } else {
+                 throw new RuntimeException("Email not found in Google OAuth2 response");
+             }
+             user.setProfilePic(picture != null ? picture : "");
+             user.setName(name != null ? name : "");
+             user.setProviderUserId(sub);
              user.setProvider(Providers.GOOGLE);
 
          }
