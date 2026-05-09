@@ -11,7 +11,7 @@ import java.security.Principal;
 public class Helper {
     public static String getEmailOfLoggedInUser(Authentication authentication) {
 
-        if (authentication instanceof OAuth2AuthenticatedPrincipal) {
+        if (authentication instanceof OAuth2AuthenticationToken) {
             var aOAuthenticationToken = (OAuth2AuthenticationToken) authentication;
             var clientId = aOAuthenticationToken.getAuthorizedClientRegistrationId();
 

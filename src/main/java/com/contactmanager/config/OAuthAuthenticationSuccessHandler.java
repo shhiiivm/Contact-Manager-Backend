@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -35,7 +35,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
          var oauth2AuthenticationToken= (OAuth2AuthenticationToken)authentication;
 
          String authorizedClientRegistrationId =  oauth2AuthenticationToken.getAuthorizedClientRegistrationId();
-         var oauthUser=(DefaultOAuth2User)authentication.getPrincipal();
+         var oauthUser=(OAuth2User)authentication.getPrincipal();
 
          System.out.println("=== OAuth2 User Attributes ===");
          oauthUser.getAttributes().forEach((key,value) -> {
