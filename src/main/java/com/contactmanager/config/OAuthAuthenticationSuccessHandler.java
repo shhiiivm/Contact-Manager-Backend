@@ -37,8 +37,9 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
          String authorizedClientRegistrationId =  oauth2AuthenticationToken.getAuthorizedClientRegistrationId();
          var oauthUser=(DefaultOAuth2User)authentication.getPrincipal();
 
+         System.out.println("=== OAuth2 User Attributes ===");
          oauthUser.getAttributes().forEach((key,value) -> {
-
+             System.out.println(key + ": " + value);
          });
 
          User user = new User();
