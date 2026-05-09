@@ -109,12 +109,12 @@ public class SecurityConfig
             logoutForm.logoutSuccessUrl("/login?logout=true");
         });
 
-        // httpSecurity.oauth2Login(oauth ->{
-        //     oauth.loginPage("/login");
-        //     oauth.successHandler(handler);
-        //
-        //
-        // });
+        httpSecurity.oauth2Login(oauth ->{
+            oauth.loginPage("/login");
+            oauth.successHandler(handler);
+
+
+        });
 
 
 
