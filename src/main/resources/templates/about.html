@@ -1,13 +1,128 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      th:replace="base :: parent(~{::#content}, 'About Page' , ~{})">
+      th:replace="base :: parent(~{::#content}, 'About Us' , ~{})">
 <body>
-<div id="content" class="pl-10 mt-10">
-    <h1>Welcome to About Page</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, veritatis.</p>
-    <h3>hello</h3>
-</div>
+    <div id="content" class="pt-16">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-500 to-indigo-700 text-white py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">About Smart Contact Manager</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Empowering you to manage your contacts securely and efficiently
+                </p>
+            </div>
+        </section>
 
+        <!-- Mission Section -->
+        <section class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Our Mission" class="rounded-lg shadow-lg">
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Our Mission</h2>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            At Smart Contact Manager, our mission is to provide a simple, secure, and powerful solution for managing your personal and professional contacts. We believe that keeping your contacts organized shouldn't be complicated.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Founded in 2025, we've been working tirelessly to create a platform that puts your privacy and security first while offering an intuitive user experience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Values Section -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Our Core Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 text-center">
+                        <div class="text-blue-500 text-4xl mb-4">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Security First</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Your data is encrypted and protected with industry-standard security measures.
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 text-center">
+                        <div class="text-green-500 text-4xl mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">User-Centric</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            We design our features based on real user feedback and needs.
+                        </p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 text-center">
+                        <div class="text-purple-500 text-4xl mb-4">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Innovation</h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Continuously improving and adding new features to enhance your experience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-16 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Meet Our Team</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
+                        <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                            SK
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Shivam Shankar</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Founder & Developer</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
+                        <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                            TM
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Team Member</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Backend Developer</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
+                        <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                            DM
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Design Lead</h3>
+                        <p class="text-gray-600 dark:text-gray-300">UI/UX Designer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-gradient-to-r from-blue-500 to-indigo-700 text-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-bold mb-2">10K+</div>
+                        <div class="text-lg">Active Users</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">50K+</div>
+                        <div class="text-lg">Contacts Stored</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">99.9%</div>
+                        <div class="text-lg">Uptime</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">24/7</div>
+                        <div class="text-lg">Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
