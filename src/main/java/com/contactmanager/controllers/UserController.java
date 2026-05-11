@@ -18,7 +18,7 @@ public class UserController {
 
     @RequestMapping(value = "/dashboard")
     public String userDashboard() {
-        return "user/dashboard";
+        return "User/dashboard";
     }
 
     @RequestMapping(value = "/profile")
