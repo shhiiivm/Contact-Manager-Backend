@@ -26,7 +26,6 @@ public class Contact
     private  String address;
     private  String picture;
 
-    @Lob
     @Column(columnDefinition = "TEXT")
     private  String description;
     private  boolean favourite = false;
