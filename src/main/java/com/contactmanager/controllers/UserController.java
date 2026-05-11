@@ -23,7 +23,7 @@ public class UserController {
 
     @RequestMapping(value = "/profile")
     public String userProfile(Model model, Authentication authentication) {
-        return "user/profile";
+        return "User/profile";
     }
 
 }

@@ -43,7 +43,7 @@ public class ContactController {
 
         contactForm.setFavourite(true);
         model.addAttribute("contactForm", contactForm);
-        return "user/add_contact";
+        return "User/add_contact";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -60,7 +60,7 @@ public class ContactController {
                     .content("Please correct the following errors")
                     .type(MessageType.red)
                     .build());
-            return "user/add_contact";
+            return "User/add_contact";
         }
 
         String username = Helper.getEmailOfLoggedInUser(authentication);
@@ -129,7 +129,7 @@ public class ContactController {
 
         model.addAttribute("contactSearchForm", new ContactSearchForm());
 
-        return "user/contacts";
+        return "User/contacts";
     }
 
     // search handler
@@ -165,7 +165,7 @@ public class ContactController {
 
         model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
 
-        return "user/search";
+        return "User/search";
     }
 
     // detete contact
@@ -198,7 +198,7 @@ public class ContactController {
         if ("view".equals(mode)) {
             // View mode - show read-only contact details
             model.addAttribute("contact", contact);
-            return "user/view_contact";
+            return "User/view_contact";
         } else {
             // Edit mode - populate form for editing
             ContactForm contactForm = new ContactForm();
@@ -213,7 +213,7 @@ public class ContactController {
             contactForm.setPicture(contact.getPicture());
             model.addAttribute("contactForm", contactForm);
             model.addAttribute("contactId", contactId);
-            return "user/update_contact_view";
+            return "User/update_contact_view";
         }
     }
 
@@ -225,7 +225,7 @@ public class ContactController {
 
         // update the contact
         if (bindingResult.hasErrors()) {
-            return "user/update_contact_view";
+            return "User/update_contact_view";
         }
 
         var con = contactService.getById(contactId);
