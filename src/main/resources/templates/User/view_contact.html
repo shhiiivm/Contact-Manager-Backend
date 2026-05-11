@@ -31,7 +31,7 @@
                                 <!-- Display user icon if no picture is available -->
                                 <div th:if="${contact.picture == null or contact.picture.isEmpty()}"
                                     class="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center">
-                                    <i class="fa-solid fa-user text-gray-500 text-4xl"></i>
+                                    <i data-lucide="user" class="text-gray-500 w-10 h-10"></i>
                                 </div>
                                 <!-- Display contact picture if available -->
                                 <img th:unless="${contact.picture == null or contact.picture.isEmpty()}"
@@ -79,7 +79,7 @@
                                     </label>
                                     <div class="p-2 bg-gray-50 dark:bg-gray-700 rounded">
                                         <span th:if="${contact.favourite}" class="text-yellow-500">
-                                            <i class="fas fa-star"></i> Favorite Contact
+                                            <i data-lucide="star" class="w-4 h-4"></i> Favorite Contact
                                         </span>
                                         <span th:unless="${contact.favourite}" class="text-gray-900 dark:text-white">
                                             Not a Favorite Contact

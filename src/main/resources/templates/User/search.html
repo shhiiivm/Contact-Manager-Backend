@@ -80,7 +80,7 @@
                                     <!-- Display user icon if no picture is available -->
                                     <div th:if="${c.picture == null or c.picture.isEmpty()}"
                                         class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
-                                        <i class="fa-solid fa-user text-gray-500"></i>
+                                        <i data-lucide="user" class="text-gray-500 w-4 h-4"></i>
                                     </div>
                                     <!-- Display contact picture if available -->
                                     <img th:unless="${c.picture == null or c.picture.isEmpty()}"
@@ -95,7 +95,7 @@
                                     </div>
                                 </th>
                                 <td class="px-6 py-4">
-                                    <i class="fa-solid fa-phone w-4 h-4"></i>
+                                    <i data-lucide="phone" class="w-4 h-4"></i>
                                     <span data-th-text="*{phoneNumber}"></span>
                                 </td>
                                 <td class="px-6 py-4">
@@ -104,20 +104,20 @@
                                             class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
 
                                         <a data-th-href="@{*{websiteLink}}" target="_blank"><i
-                                                class="fa-solid w-6 h-6 fa-link"></i></a>
+                                                data-lucide="link" class="w-6 h-6"></i></a>
                                         <a data-th-href="@{*{linkedInLink}}" target="_blank">
-                                            <i class="fa-brands w-6 h-6 fa-linkedin"></i>
+                                            <i data-lucide="linkedin" class="w-6 h-6"></i>
                                         </a>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div>
                                         <a href="">
-                                            <i class="fa-solid w-6 h-6 fa-trash"></i>
+                                            <i data-lucide="trash-2" class="w-6 h-6"></i>
                                         </a>
-                                        <a href=""> <i class="fa-solid w-6 h-6 fa-pen"></i></a>
+                                        <a href=""> <i data-lucide="pencil" class="w-6 h-6"></i></a>
                                         <button th:onclick="loadContactdata([[${c.id}]])">
-                                            <i class="fa-solid fa-eye"></i>
+                                            <i data-lucide="eye" class="w-4 h-4"></i>
                                         </button>
                                     </div>
                                 </td>
