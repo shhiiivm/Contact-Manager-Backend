@@ -20,7 +20,7 @@
 
     <!-- Option A: use your own flag -->
     <div th:if="${loggedInUser != null}">
-        <div th:replace="~{user/user_navbar :: user-navbar}"></div>
+        <div th:replace="~{User/user_navbar :: user-navbar}"></div>
     </div>
 
     <div th:unless="${loggedInUser != null}">
