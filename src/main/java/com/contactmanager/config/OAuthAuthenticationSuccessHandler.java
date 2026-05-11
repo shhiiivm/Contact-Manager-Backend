@@ -61,14 +61,14 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
              picture = oauthUser.getAttribute("picture");
              String sub = oauthUser.getAttribute("sub");
 
-             System.out.println("Google OAuth2 attributes - email: " + email + ", name: " + name + ", sub: " + sub);
+             System.out.println("Google OAuth2 attributes - email: " + email + ", name: " + name + ", sub: " + sub + ", picture: " + picture + ", picture type: " + (picture != null ? picture.getClass().getName() : "null"));
 
              if (email != null) {
                  user.setEmail(email);
              } else {
                  throw new RuntimeException("Email not found in Google OAuth2 response");
              }
-             user.setProfilePic(picture != null ? picture : "");
+             user.setProfilePic(picture != null ? picture.toString() : "");
              user.setName(name != null ? name : "");
              user.setProviderUserId(sub);
              user.setProvider(Providers.GOOGLE);
@@ -78,12 +78,14 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
          {
              String email = oauthUser.getAttribute("email") != null ? oauthUser.getAttribute("email").toString()
                      : oauthUser.getAttribute("login").toString() + "@gmail.com";
-             picture = oauthUser.getAttribute("avatar_url").toString();
+             picture = oauthUser.getAttribute("avatar_url") != null ? oauthUser.getAttribute("avatar_url").toString() : null;
              String name = oauthUser.getAttribute("login").toString();
              String providerUserId = oauthUser.getName();
 
+             System.out.println("GitHub OAuth2 attributes - email: " + email + ", name: " + name + ", picture: " + picture);
+
              user.setEmail(email);
-             user.setProfilePic(picture);
+             user.setProfilePic(picture != null ? picture : "");
              user.setName(name);
              user.setProviderUserId(providerUserId);
              user.setProvider(Providers.GITHUB);
