@@ -13,7 +13,7 @@
         <!-- user is logged in : sidebar -->
 
         <div th:if="${loggedInUser}">
-            <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+            <div data-th-replace="~{User/sidebar :: sidebar}"></div>
         </div>
 
         <div class="sm:pl-64 pt-20" style="height: 1000px">
@@ -159,7 +159,7 @@
                     </h1>
                 </div>
             </div>
-            <div data-th-replace="~{user/contact_modals :: contact}"></div>
+            <div data-th-replace="~{User/contact_modals :: contact}"></div>
         </div>
     </div>
 
