@@ -52,11 +52,13 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
          user.setAbout("This account is create using google");
 
 
+         String picture = null;
+
          if(authorizedClientRegistrationId.equalsIgnoreCase("google"))
          {
              String email = oauthUser.getAttribute("email");
              String name = oauthUser.getAttribute("name");
-             String picture = oauthUser.getAttribute("picture");
+             picture = oauthUser.getAttribute("picture");
              String sub = oauthUser.getAttribute("sub");
 
              System.out.println("Google OAuth2 attributes - email: " + email + ", name: " + name + ", sub: " + sub);
@@ -76,7 +78,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
          {
              String email = oauthUser.getAttribute("email") != null ? oauthUser.getAttribute("email").toString()
                      : oauthUser.getAttribute("login").toString() + "@gmail.com";
-             String picture = oauthUser.getAttribute("avatar_url").toString();
+             picture = oauthUser.getAttribute("avatar_url").toString();
              String name = oauthUser.getAttribute("login").toString();
              String providerUserId = oauthUser.getName();
 
