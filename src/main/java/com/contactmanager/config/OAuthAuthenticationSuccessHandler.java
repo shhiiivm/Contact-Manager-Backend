@@ -123,7 +123,18 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
         if(user2 == null)
         {
             userRepo.save(user);
-
+        }
+        else
+        {
+            // Update existing user's profile picture if it's empty or from Google login
+            if(authorizedClientRegistrationId.equalsIgnoreCase("google") && picture != null)
+            {
+                if(user2.getProfilePic() == null || user2.getProfilePic().isEmpty())
+                {
+                    user2.setProfilePic(picture);
+                    userRepo.save(user2);
+                }
+            }
         }
 
 

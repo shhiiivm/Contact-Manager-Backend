@@ -12,13 +12,161 @@
         <div th:replace="~{User/sidebar :: sidebar}"></div>
     </div>
 
-    <div class="pt-10 sm:pl-64"  style="height: 10000px">
+    <div class="pt-20 sm:pl-64 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Welcome Header -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-2">
+                    Welcome back, <span th:text="${loggedInUser.name}">User</span>!
+                </h1>
+                <p class="text-gray-600 dark:text-gray-300">Here's what's happening with your contacts today.</p>
+            </div>
 
-        <h1>Welcome to Dashboard Page</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, veritatis.</p>
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Total Contacts -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 hover:shadow-2xl transition duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Total Contacts</p>
+                            <p class="text-3xl font-bold text-gray-800 dark:text-white mt-1">0</p>
+                        </div>
+                        <div class="bg-blue-500 text-white rounded-lg p-3">
+                            <i class="fas fa-address-book text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-green-500 text-sm font-medium">+0%</span>
+                        <span class="text-gray-600 dark:text-gray-400 text-sm"> from last month</span>
+                    </div>
+                </div>
 
+                <!-- Favorite Contacts -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 hover:shadow-2xl transition duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Favorites</p>
+                            <p class="text-3xl font-bold text-gray-800 dark:text-white mt-1">0</p>
+                        </div>
+                        <div class="bg-red-500 text-white rounded-lg p-3">
+                            <i class="fas fa-heart text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-green-500 text-sm font-medium">+0%</span>
+                        <span class="text-gray-600 dark:text-gray-400 text-sm"> from last month</span>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 hover:shadow-2xl transition duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Recent Activity</p>
+                            <p class="text-3xl font-bold text-gray-800 dark:text-white mt-1">0</p>
+                        </div>
+                        <div class="bg-green-500 text-white rounded-lg p-3">
+                            <i class="fas fa-clock text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-gray-600 dark:text-gray-400 text-sm">Last 7 days</span>
+                    </div>
+                </div>
+
+                <!-- Account Status -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 hover:shadow-2xl transition duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm font-medium">Account Status</p>
+                            <p class="text-3xl font-bold text-green-500 mt-1">Active</p>
+                        </div>
+                        <div class="bg-indigo-500 text-white rounded-lg p-3">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-green-500 text-sm font-medium">Verified</span>
+                        <span class="text-gray-600 dark:text-gray-400 text-sm"> account</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Quick Actions</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <a th:href="@{/user/contacts/add}"
+                       class="flex flex-col items-center p-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl hover:from-blue-600 hover:to-blue-700 transition duration-300 text-white">
+                        <i class="fas fa-plus text-3xl mb-3"></i>
+                        <span class="font-semibold">Add Contact</span>
+                    </a>
+                    <a th:href="@{/user/contacts}"
+                       class="flex flex-col items-center p-6 bg-gradient-to-br from-green-500 to-green-600 rounded-xl hover:from-green-600 hover:to-green-700 transition duration-300 text-white">
+                        <i class="fas fa-list text-3xl mb-3"></i>
+                        <span class="font-semibold">View Contacts</span>
+                    </a>
+                    <a th:href="@{/user/contacts/search}"
+                       class="flex flex-col items-center p-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl hover:from-purple-600 hover:to-purple-700 transition duration-300 text-white">
+                        <i class="fas fa-search text-3xl mb-3"></i>
+                        <span class="font-semibold">Search</span>
+                    </a>
+                    <a th:href="@{/user/profile}"
+                       class="flex flex-col items-center p-6 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl hover:from-indigo-600 hover:to-indigo-700 transition duration-300 text-white">
+                        <i class="fas fa-user text-3xl mb-3"></i>
+                        <span class="font-semibold">My Profile</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Getting Started Guide -->
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Getting Started</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-lg p-3 mr-4">
+                            <span class="font-bold text-xl">1</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800 dark:text-white mb-2">Add Your First Contact</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Click on "Add Contact" to start building your contact list.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-lg p-3 mr-4">
+                            <span class="font-bold text-xl">2</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800 dark:text-white mb-2">Organize Your Contacts</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Mark important contacts as favorites for quick access.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-lg p-3 mr-4">
+                            <span class="font-bold text-xl">3</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800 dark:text-white mb-2">Search & Filter</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Use the powerful search feature to find contacts instantly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl shadow-xl p-6 text-white">
+                <div class="flex items-center">
+                    <div class="mr-4">
+                        <i class="fas fa-lightbulb text-4xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Pro Tip</h3>
+                        <p class="text-blue-100">You can import contacts from CSV files to quickly populate your contact list. Check out the import feature in the contacts page!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 
 </div>
 
